@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadro de tarefas</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Quadro de tarefas acadêmico</h1>
+    </header>
+
+    <main>
+
+        <form action="">
+            <fieldset>
+                <legend>Filtros de busca:</legend>
+                <label for="titulo">Título da obra:</label>
+                <input id="titulo" type="search" placeholder="título">
+
+                <label for="prioridade">Prioridade da tarefa:</label>
+                <select name="Prioridade" id="prioridade">
+                    <option value="baixa">Baixa</option>
+                    <option value="media">Média</option>
+                    <option value="alta">Alta</option>
+                </select>
+
+                <label for="status">Status da tarefa:</label>
+                <select name="status" id="status">
+                    <option value="afazer">A fazer</option>
+                    <option value="emandamento">Em andamento</option>
+                    <option value="emrevisao">Em revisão</option>
+                    <option value="concluida">Concluída</option>
+                </select>
+
+                <button type="submit">Filtrar</button>
+            </fieldset>
+        </form>
+
+        <section aria-labelledby="titulo-afazer">
+            <h2 id="titulo-afazer"> Tarefas a fazer</h2>
+
+            <ul>
+                <li>
+                    <article>
+                        <h3>Organizador de tarefas</h3>
+                        <p>Projeto: projeto em HTML</p>
+                        <p>Responsável: Ana</p>
+                        <p>Prazo: 18/10</p>
+                        <p>Prioriade: Baixa</p>
+                    </article>
+                </li>
+
+                <li>
+                    <article>
+                        <h3>Planner</h3>
+                        <p>Projeto: projeto em HTML com CSS</p>
+                        <p>Responsável: Pedro</p>
+                        <p>Prazo: 20/08</p>
+                        <p>Prioriade: Média</p>
+                    </article>
+                </li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="titulo-emandamento">
+            <h2 id="titulo-emandamento"> Tarefas em andamento</h2>
+            <ul>
+                <li>
+                    <article>
+                        <h3>Cronometro para cozinha</h3>
+                        <p>Projeto: projeto em Python</p>
+                        <p>Responsável: João</p>
+                        <p>Prazo: 14/08</p>
+                        <p>Prioriade: Média</p>
+                    </article>
+                </li>
+
+                <li>
+                    <article>
+                        <h3>Automação com calendário</h3>
+                        <p>Projeto: projeto em Python</p>
+                        <p>Responsável: Marta</p>
+                        <p>Prazo: 15/08</p>
+                        <p>Prioriade: Alta</p>
+                    </article>
+                </li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="titulo-emrevisao">
+            <h2 id="titulo-emrevisao"> Tarefas em revisão</h2>
+            <ul>
+                <li>
+                    <article>
+                        <h3>Criação de bot para vendas</h3>
+                        <p>Projeto: projeto em Python</p>
+                        <p>Responsável: Kira</p>
+                        <p>Prazo: 20/09</p>
+                        <p>Prioriade: Alta</p>
+                    </article>
+                </li>
+
+                <li>
+                    <article>
+                        <h3>Blog de pokemon</h3>
+                        <p>Projeto: projeto em HTML e CSS</p>
+                        <p>Responsável: Fátima</p>
+                        <p>Prazo: 22/10</p>
+                        <p>Prioriade: Média</p>
+                    </article>
+                </li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="titulo-concluida">
+            <h2 id="titulo-concluida"> Tarefas concluida</h2>
+            <ul>
+                <li>
+                    <article>
+                        <h3>Blog de gatos</h3>
+                        <p>Projeto: projeto em HTML e CSS</p>
+                        <p>Responsável: Sueli</p>
+                        <p>Prazo: 30/08</p>
+                        <p>Prioriade: Baixa</p>
+                    </article>
+                </li>
+
+                <li>
+                    <article>
+                        <h3>Simulador de Btalhas pokemon</h3>
+                        <p>Projeto: projeto em Python</p>
+                        <p>Responsável: Marcos</p>
+                        <p>Prazo: 22/08</p>
+                        <p>Prioriade: Baixa</p>
+                    </article>
+                </li>
+            </ul>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>
+            &star; Brenno Milhomem Farias - Desenvolvimento Front-End &star;
+        </p>
+    </footer>
+
+</body>
+
+</html>
