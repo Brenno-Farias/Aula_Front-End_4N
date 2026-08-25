@@ -1,0 +1,197 @@
+:root {
+    --cor-fundo: #f4f6f9;
+    --cor-borda: rgba(33, 34, 43, 0.87);
+    --cor-texto: rgb(38, 37, 59);
+    --raio-borda: 8px;
+
+    --espacamento-1: 0.5rem;
+    --espacamento-2: 1rem;
+    --espacamento-3: 1.5rem;
+
+    --cor-afazer: #ff5f67a9;
+    --cor-emandamento: #fab855;
+    --cor-emrevisao: #fdfb77f1;
+    --cor-concluida: #68ff68;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    font-family: 'Syne', sans-serif;
+
+}
+
+
+
+
+.filtroBusca {
+    display: flex;
+    border-radius: 4px;
+    border-color: rgba(7, 7, 7, 0.432);
+    background-color: #0b72897c;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.267);
+    flex-wrap: wrap;
+
+}
+
+.filtroBusca input,
+.filtroBusca select,
+.filtroBusca button {
+    border: solid rgba(18, 63, 88, 0.541);
+    border-radius: 8px;
+    font-weight: 550;
+    
+    min-width: 24px;
+    min-height: 24px;
+
+}
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible{
+    outline: 2px solid var(--cor-borda);
+}
+
+.card-afazer {
+    background-color: var(--cor-afazer);
+    display: flex;
+    border: solid 1px #333;
+    margin: 6px;
+    padding: var(--espacamento-1);
+    border-radius: var(--raio-borda);
+    flex-direction: column;
+    min-width: 0;
+
+    /*Tentar efeito de movimento*/
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.card-emandamento {
+    background-color: var(--cor-emandamento);
+    display: flex;
+    border: solid 1px #333;
+    margin: 6px;
+    padding: var(--espacamento-1);
+    border-radius: var(--raio-borda);
+    flex-direction: column;
+    min-width: 0;
+
+    /*Tentar efeito de movimento*/
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.card-emrevisao {
+    background-color: var(--cor-emrevisao);
+    display: flex;
+    border: solid 1px #333;
+    margin: 6px;
+    padding: var(--espacamento-1);
+    border-radius: var(--raio-borda);
+    flex-direction: column;
+    min-width: 0;
+
+    /*Tentar efeito de movimento*/
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.card-concluida {
+    background-color: var(--cor-concluida);
+    display: flex;
+    border: solid 1px #333;
+    margin: 6px;
+    padding: var(--espacamento-1);
+    border-radius: var(--raio-borda);
+    flex-direction: column;
+    min-width: 0;
+
+    /*Tentar efeito de movimento*/
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.card-afazer h3,
+.card-emandamento h3,
+.card-emrevisao h3,
+.card-concluida h3 {
+    white-space: nowrap; /* Ela quebra o comportamento padrão do navegador de criar novas linhas, forçando todo o exto a permanecer em uma linha única e contínua */
+    overflow: hidden; /* Quebra a visibilidade do conteúdo excedente ocultando tudo qu eultrapassa o limite físico da caixa. */
+    text-overflow: ellipsis; /* Modifica o acabamento visual do texto, inserindo as reticências no ponto onde a caixa esconde o conteúdo. */
+    flex-grow: 1;
+}
+
+.card-afazer:hover,
+.card-emandamento:hover,
+.card-emrevisao:hover,
+.card-concluida:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.filtroBusca button {
+    background-color: #2563eb;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.filtroBusca button:hover {
+    background-color: #2d52b694;
+}
+
+.quadro {
+    display: grid;
+    gap: var(--espacamento-1);
+    grid-template-columns: 1fr;
+}
+
+
+@media (min-width: 768px) {
+    .quadro {
+        grid-template-columns: repeat(4, 1fr);
+    } /* em dispositivos moveis não há espaço suficiente para as 4 colunas sem gerar uma barra de rolagem horizontal. O layout de 4 colunas é ativado em telas maiores */
+}
+
+.coluna {
+    gap: var(--espacamento-2);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;  /*ela quebra a restrição do flexbox permitindo que o item encolha abaixo do tamanho original do seu conteúdo. */
+}
+
+.coluna h2 {
+    font-size: 1.1rem;
+}
+
+.lista-cards {
+    display: flex;
+    flex-direction: column;
+
+}
+
+footer {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #0a1424da;
+}
+
+h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+}
+
+.prazo{
+    margin-top: auto;
+    text-align: right;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
