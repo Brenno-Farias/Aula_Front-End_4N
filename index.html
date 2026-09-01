@@ -11,7 +11,7 @@
 <body>
 
     <header>
-        <h1>Quadro de tarefas acadêmico.</h1>
+        <h1 id="quadro-de-tarefas">Quadro de tarefas acadêmico.</h1>
     </header>
 
     <main>
@@ -31,9 +31,9 @@
 
                 <label for="status">Status da tarefa: </label>
                 <select name="status" id="status">
-                    <option value="afazer">A fazer</option>
-                    <option value="emandamento">Em andamento</option>
-                    <option value="emrevisao">Em revisão</option>
+                    <option value="a-fazer">A fazer</option>
+                    <option value="em-andamento">Em andamento</option>
+                    <option value="em-revisao">Em revisão</option>
                     <option value="concluida">Concluída</option>
                 </select>
 
@@ -41,113 +41,33 @@
             </fieldset>
         </form>
 
-        <section class="quadro" aria-labelledby="quadro-de-tarefasr">
-            <div class="coluna" aria-labelledby="tarefas-afazer">
+        <section class="quadro" data-quadro aria-labelledby="quadro-de-tarefas">
+            <div class="coluna" aria-labelledby="titulo-afazer">
                 <h2 id="titulo-afazer">Tarefas a fazer</h2>
 
-                <ul class="lista-cards">
-                    <li class="card-afazer">
-                        <article>
-                            <h3>Organizador de tarefas</h3>
-                            <p>Projeto: projeto em HTML</p>
-                            <p>Responsável: Ana</p>
-                            <p>Prioriade: Baixa</p>
-                            <p class="prazo">Prazo: 18/10</p>
+                <ul class="lista-cards" data-lista-status="a-fazer">
 
-                        </article>
-                    </li>
-
-                    <li class="card-afazer">
-                        <article>
-                            <h3>Planner</h3>
-                            <p>Projeto: projeto em HTML com CSS</p>
-                            <p>Responsável: Pedro</p>
-                            <p>Prioriade: Média</p>
-                            <p class="prazo">Prazo: 20/08</p>
-
-                        </article>
-                    </li>
                 </ul>
             </div>
 
             <div class="coluna" aria-labelledby="titulo-emandamento">
                 <h2 id="titulo-emandamento">Tarefas em andamento</h2>
-                <ul class="lista-cards">
-                    <li class="card-emandamento">
-                        <article>
-                            <h3>Cronometro para cozinha</h3>
-                            <p>Projeto: projeto em Python</p>
-                            <p>Responsável: João</p>
-                            <p>Prioriade: Média</p>
-                            <p class="prazo">Prazo: 14/08</p>
+                <ul class="lista-cards" data-lista-status="em-andamento">
 
-                        </article>
-                    </li>
-
-                    <li class="card-emandamento">
-                        <article>
-                            <h3>Automação com calendário</h3>
-                            <p>Projeto: projeto em Python</p>
-                            <p>Responsável: Marta</p>
-                            <p>Prioriade: Alta</p>
-                            <p class="prazo">Prazo: 15/08</p>
-
-                        </article>
-                    </li>
                 </ul>
             </div>
 
             <div class="coluna" aria-labelledby="titulo-emrevisao">
                 <h2 id="titulo-emrevisao">Tarefas em revisão</h2>
-                <ul class="lista-cards">
-                    <li class="card-emrevisao">
-                        <article>
-                            <h3>Criação de bot para vendas</h3>
-                            <p>Projeto: projeto em Python</p>
-                            <p>Responsável: Kira</p>
-                            <p>Prioriade: Alta</p>
-                            <p class="prazo">Prazo: 20/09</p>
+                <ul class="lista-cards" data-lista-status="em-revisao">
 
-                        </article>
-                    </li>
-
-                    <li class="card-emrevisao">
-                        <article>
-                            <h3>Blog de pokemon</h3>
-                            <p>Projeto: projeto em HTML e CSS</p>
-                            <p>Responsável: Fátima</p>
-                            <p>Prioriade: Média</p>
-                            <p class="prazo">Prazo: 22/10</p>
-
-                        </article>
-                    </li>
                 </ul>
             </div>
 
             <div class="coluna" aria-labelledby="titulo-concluida">
                 <h2 id="titulo-concluida">Tarefas concluida</h2>
-                <ul class="lista-cards">
-                    <li class="card-concluida">
-                        <article>
-                            <h3>Blog de gatos</h3>
-                            <p>Projeto: projeto em HTML e CSS</p>
-                            <p>Responsável: Sueli</p>
-                            <p>Prioriade: Baixa</p>
-                            <p class="prazo">Prazo: 30/08</p>
+                <ul class="lista-cards" data-lista-status="concluida">
 
-                        </article>
-                    </li>
-
-                    <li class="card-concluida">
-                        <article>
-                            <h3>Simulador de Btalhas pokemon</h3>
-                            <p>Projeto: projeto em Python</p>
-                            <p>Responsável: Marcos</p>
-                            <p>Prioriade: Baixa</p>
-                            <p class="prazo">Prazo: 22/08</p>
-
-                        </article>
-                    </li>
                 </ul>
             </div>
         </section>
@@ -160,6 +80,7 @@
         </h3>
     </footer>
 
+    <script type="module" src="./js/app.js"></script>
 </body>
 
 </html>

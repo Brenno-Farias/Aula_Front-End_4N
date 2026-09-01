@@ -24,9 +24,6 @@ body {
 
 }
 
-
-
-
 .filtroBusca {
     display: flex;
     border-radius: 4px;
@@ -56,7 +53,7 @@ button:focus-visible{
     outline: 2px solid var(--cor-borda);
 }
 
-.card-afazer {
+.card-a-fazer {
     background-color: var(--cor-afazer);
     display: flex;
     border: solid 1px #333;
@@ -71,7 +68,7 @@ button:focus-visible{
     cursor: pointer;
 }
 
-.card-emandamento {
+.card-em-andamento {
     background-color: var(--cor-emandamento);
     display: flex;
     border: solid 1px #333;
@@ -86,7 +83,7 @@ button:focus-visible{
     cursor: pointer;
 }
 
-.card-emrevisao {
+.card-em-revisao {
     background-color: var(--cor-emrevisao);
     display: flex;
     border: solid 1px #333;
@@ -116,19 +113,20 @@ button:focus-visible{
     cursor: pointer;
 }
 
-.card-afazer h3,
-.card-emandamento h3,
-.card-emrevisao h3,
+.card-a-fazer h3,
+.card-em-andamento h3,
+.card-em-revisao h3,
 .card-concluida h3 {
     white-space: nowrap; /* Ela quebra o comportamento padrão do navegador de criar novas linhas, forçando todo o exto a permanecer em uma linha única e contínua */
     overflow: hidden; /* Quebra a visibilidade do conteúdo excedente ocultando tudo qu eultrapassa o limite físico da caixa. */
     text-overflow: ellipsis; /* Modifica o acabamento visual do texto, inserindo as reticências no ponto onde a caixa esconde o conteúdo. */
     flex-grow: 1;
+    
 }
 
-.card-afazer:hover,
-.card-emandamento:hover,
-.card-emrevisao:hover,
+.card-a-fazer:hover,
+.card-em-andamento:hover,
+.card-em-revisao:hover,
 .card-concluida:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -194,4 +192,29 @@ article {
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+.btn-detalhes {
+    /* Arredondamento das bordas (aumente o valor em px para arredondar mais) */
+    border-radius: 12px;
+
+    /* Cor de fundo com transparência: R, G, B e Opacidade (de 0 a 1) */
+    background-color: rgba(255, 255, 255, 0.15);
+
+    /* Borda sutil semi-transparente */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    /* Cor do texto e espaçamento interno */
+    color: inherit;
+    padding: 8px 16px;
+    cursor: pointer;
+
+    /* Transição suave ao passar o mouse */
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Efeito ao passar o mouse (hover) */
+.btn-detalhes:hover {
+    background-color: rgba(0, 0, 0, 0.226);
+    border-color: rgba(255, 255, 255, 0.5);
 }
