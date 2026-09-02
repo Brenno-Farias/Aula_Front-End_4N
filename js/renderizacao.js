@@ -46,6 +46,7 @@ export function renderizarTarefas(tarefas, quadro) {
     } else {
       const cartoes = tarefasFiltradas.map(criarCartao);
       coluna.replaceChildren(...cartoes);
+      
     }
   });
 }

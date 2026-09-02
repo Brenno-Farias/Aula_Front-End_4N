@@ -1,0 +1,12 @@
+{
+  "tarefas": [
+    { "id": "t1", "titulo": "Revisar critérios da E3", "status": "a-fazer", "prioridade": "alta", "prazo": "2026-09-10" },
+    { "id": "t2", "titulo": "Criar módulo de API em JS", "status": "a-fazer", "prioridade": "media", "prazo": "2026-09-12" },
+    { "id": "t3", "titulo": "Implementar live region no HTML", "status": "em-andamento", "prioridade": "alta", "prazo": "2026-09-15" },
+    { "id": "t4", "titulo": "Configurar tratamento de erros", "status": "em-andamento", "prioridade": "baixa", "prazo": "2026-09-16" },
+    { "id": "t5", "titulo": "Testar estado de tela vazia", "status": "em-revisao", "prioridade": "alta", "prazo": "2026-09-18" },
+    { "id": "t6", "titulo": "Validar acessibilidade aria-live", "status": "em-revisao", "prioridade": "media", "prazo": "2026-09-20" },
+    { "id": "t7", "titulo": "Ajustar estrutura do JSON", "status": "concluida", "prioridade": "alta", "prazo": "2026-09-01" },
+    { "id": "t8", "titulo": "Remover importação do dados.js", "status": "concluida", "prioridade": "baixa", "prazo": "2026-09-02" }
+  ]
+}   
