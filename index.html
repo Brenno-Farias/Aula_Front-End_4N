@@ -26,6 +26,7 @@
 
                 <label for="prioridade">Prioridade da tarefa: </label>
                 <select name="Prioridade" id="prioridade">
+                    <option value="">Todas</option>
                     <option value="baixa">Baixa</option>
                     <option value="media">Média</option>
                     <option value="alta">Alta</option>
@@ -33,13 +34,23 @@
 
                 <label for="status">Status da tarefa: </label>
                 <select name="status" id="status">
+                    <option value="">Todos</option>
                     <option value="a-fazer">A fazer</option>
                     <option value="em-andamento">Em andamento</option>
                     <option value="em-revisao">Em revisão</option>
                     <option value="concluida">Concluída</option>
                 </select>
 
+                <label for="ordem-prazo">Ordenar por prazo: </label>
+                <select name="ordem-prazo" id="ordem-prazo">
+                    <option value="">Sem ordenação</option>
+                    <option value="crescente">Mais próximas (Crescente)</option>
+                    <option value="decrescente">Mais distantes (Decrescente)</option>
+                </select>
+
                 <button type="submit">Filtrar</button>
+                <button type="button" id="btn-limpar">Limpar filtros</button>
+
             </fieldset>
         </form>
 

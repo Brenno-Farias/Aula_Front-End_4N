@@ -7,6 +7,8 @@ export async function carregarTarefas() {
     throw erroProtocolo;
   }
 
+
   const dados = await resposta.json();
   return dados.tarefas;
+
 }

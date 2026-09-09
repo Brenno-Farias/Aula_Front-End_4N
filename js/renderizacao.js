@@ -7,10 +7,12 @@ export function criarCartao(tarefa) {
   const cartao = document.createElement("article");
   cartao.className = "cartao";
   cartao.dataset.tarefaId = tarefa.id;
+  
 
   const titulo = document.createElement("h3");
   titulo.className = "titulo-cartao";
   titulo.textContent = tarefa.titulo;
+
 
   const info = document.createElement("p");
   info.className = "info-cartao";

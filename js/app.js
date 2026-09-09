@@ -1,25 +1,43 @@
 import { carregarTarefas } from "./api.js";
 import { renderizarEstado } from "./estados.js";
+import { processarTarefas } from "./busca.js";
 
-// Variável para armazenar as tarefas carregadas em memória
-let listaTarefas = [];
+
+const estado = {
+  tarefas: [],
+  filtros: {
+    titulo: "",
+    prioridade: "",
+    status: "",
+    ordemPrazo: ""
+  }
+};
+
+
+function aplicarFiltrosEObrigaRenderizacao() {
+  const resultado = processarTarefas(estado.tarefas, estado.filtros);
+
+  if (resultado.length === 0) {
+    renderizarEstado("vazio");
+  } else {
+    renderizarEstado("sucesso", resultado);
+  }
+}
 
 async function inicializarApp() {
-  // 1. Estado de carregando deve ser ativado ANTES do await
   renderizarEstado("carregando");
 
   try {
-    listaTarefas = await carregarTarefas();
+    estado.tarefas = await carregarTarefas();
 
-    if (listaTarefas.length === 0) {
+    if (estado.tarefas.length === 0) {
       renderizarEstado("vazio");
     } else {
-      renderizarEstado("sucesso", listaTarefas);
+      aplicarFiltrosEObrigaRenderizacao();
     }
   } catch (erro) {
     let mensagemExibida = "Ocorreu uma falha desconhecida.";
 
-    // Distinção de erros por erro.name
     if (erro.name === "TypeError") {
       mensagemExibida = "Falha de rede. Verifique sua conexão com a internet.";
     } else if (erro.name === "SyntaxError") {
@@ -34,7 +52,71 @@ async function inicializarApp() {
   }
 }
 
-// 2. Delegação de Eventos no Quadro (Requisito mantido da E2)
+
+const formFiltros = document.getElementById("form-filtros");
+const inputTitulo = document.getElementById("titulo");
+const selectPrioridade = document.getElementById("prioridade");
+const selectStatus = document.getElementById("status");
+const selectOrdemPrazo = document.getElementById("ordem-prazo");
+const btnLimpar = document.getElementById("btn-limpar");
+
+if (formFiltros) {
+
+  formFiltros.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+    aplicarFiltrosEObrigaRenderizacao();
+  });
+
+
+  if (inputTitulo) {
+    inputTitulo.addEventListener("input", (evento) => {
+      estado.filtros.titulo = evento.target.value;
+      aplicarFiltrosEObrigaRenderizacao();
+    });
+  }
+
+  if (selectPrioridade) {
+    selectPrioridade.addEventListener("change", (evento) => {
+      estado.filtros.prioridade = evento.target.value;
+      aplicarFiltrosEObrigaRenderizacao();
+    });
+  }
+
+  if (selectStatus) {
+    selectStatus.addEventListener("change", (evento) => {
+      estado.filtros.status = evento.target.value;
+      aplicarFiltrosEObrigaRenderizacao();
+    });
+  }
+
+  if (selectOrdemPrazo) {
+    selectOrdemPrazo.addEventListener("change", (evento) => {
+      estado.filtros.ordemPrazo = evento.target.value;
+      aplicarFiltrosEObrigaRenderizacao();
+    });
+  }
+
+
+  if (btnLimpar) {
+    btnLimpar.addEventListener("click", () => {
+
+      estado.filtros = {
+        titulo: "",
+        prioridade: "",
+        status: "",
+        ordemPrazo: ""
+      };
+
+
+      formFiltros.reset();
+
+
+      aplicarFiltrosEObrigaRenderizacao();
+    });
+  }
+}
+
+
 const quadro = document.querySelector("[data-quadro]");
 
 if (quadro) {
@@ -46,7 +128,7 @@ if (quadro) {
     if (!cartao) return;
 
     const id = cartao.dataset.tarefaId;
-    const tarefaEncontrada = listaTarefas.find((t) => String(t.id) === String(id));
+    const tarefaEncontrada = estado.tarefas.find((t) => String(t.id) === String(id));
 
     if (tarefaEncontrada) {
       console.log("Detalhes da tarefa:", tarefaEncontrada);
@@ -54,5 +136,5 @@ if (quadro) {
   });
 }
 
-// 3. Execução inicial ao carregar o DOM (sem top-level await)
+
 document.addEventListener("DOMContentLoaded", inicializarApp);

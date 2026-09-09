@@ -1,5 +1,6 @@
 
 export const tarefas = [
+
   {
     class: "card-afazer",
     id: "t1",
@@ -44,4 +45,5 @@ export const tarefas = [
     prazo: "2026-08-27"
   }
   
+
 ];
