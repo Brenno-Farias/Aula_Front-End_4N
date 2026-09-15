@@ -18,7 +18,7 @@
 
         <div id="status-regiao" role="status" aria-live="polite"></div>
 
-        <form action="">
+        <form id="form-filtros">
             <fieldset class="filtroBusca">
                 <legend>Filtros de busca: </legend>
                 <label for="titulo">Título da obra:</label>
@@ -48,7 +48,6 @@
                     <option value="decrescente">Mais distantes (Decrescente)</option>
                 </select>
 
-                <button type="submit">Filtrar</button>
                 <button type="button" id="btn-limpar">Limpar filtros</button>
 
             </fieldset>
@@ -57,31 +56,22 @@
         <section class="quadro" data-quadro aria-labelledby="quadro-de-tarefas">
             <div class="coluna" aria-labelledby="titulo-afazer">
                 <h2 id="titulo-afazer">Tarefas a fazer</h2>
-
-                <ul class="lista-cards" data-lista-status="a-fazer">
-
-                </ul>
+                <ul class="lista-cards" data-lista-status="a-fazer"></ul>
             </div>
 
             <div class="coluna" aria-labelledby="titulo-emandamento">
                 <h2 id="titulo-emandamento">Tarefas em andamento</h2>
-                <ul class="lista-cards" data-lista-status="em-andamento">
-
-                </ul>
+                <ul class="lista-cards" data-lista-status="em-andamento"></ul>
             </div>
 
             <div class="coluna" aria-labelledby="titulo-emrevisao">
                 <h2 id="titulo-emrevisao">Tarefas em revisão</h2>
-                <ul class="lista-cards" data-lista-status="em-revisao">
-
-                </ul>
+                <ul class="lista-cards" data-lista-status="em-revisao"></ul>
             </div>
 
             <div class="coluna" aria-labelledby="titulo-concluida">
                 <h2 id="titulo-concluida">Tarefas concluida</h2>
-                <ul class="lista-cards" data-lista-status="concluida">
-
-                </ul>
+                <ul class="lista-cards" data-lista-status="concluida"></ul>
             </div>
         </section>
 

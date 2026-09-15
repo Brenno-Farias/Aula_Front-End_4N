@@ -5,8 +5,8 @@ export async function carregarTarefas() {
     const erroProtocolo = new Error(`HTTP status: ${resposta.status}`);
     erroProtocolo.name = "ErroProtocolo";
     throw erroProtocolo;
+    
   }
-
 
   const dados = await resposta.json();
   return dados.tarefas;

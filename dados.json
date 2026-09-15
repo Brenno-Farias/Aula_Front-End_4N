@@ -8,7 +8,6 @@
     { "id": "t6", "titulo": "Validar acessibilidade aria-live", "status": "em-revisao", "prioridade": "media", "prazo": "2026-09-20" },
     { "id": "t7", "titulo": "Ajustar estrutura do JSON", "status": "concluida", "prioridade": "alta", "prazo": "2026-09-01" },
     { "id": "t8", "titulo": "Remover importação do dados.js", "status": "concluida", "prioridade": "baixa", "prazo": "2026-09-02" }
-    
   ]
 
 }   

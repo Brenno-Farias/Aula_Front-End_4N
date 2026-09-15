@@ -31,6 +31,7 @@ export function criarCartao(tarefa) {
   li.append(cartao);
 
   return li;
+  
 }
 
 export function renderizarTarefas(tarefas, quadro) {

@@ -36,6 +36,7 @@ export const tarefas = [
     status: "em-revisao",
     prioridade: "alta",
     prazo: "2026-09-03"
+    
   },
   {
     id: "t6",

@@ -1,6 +1,5 @@
-
-export function processarTarefas(tarefas, { titulo = "", prioridade = "", status = "", ordemPrazo = "" }) {
-  const termoTitulo = titulo.trim().toLowerCase();
+export function processarTarefas(tarefas, { busca = "", prioridade = "", status = "", ordemPrazo = "" }) {
+  const termoTitulo = busca.trim().toLowerCase();
 
   const tarefasFiltradas = tarefas.filter((tarefa) => {
     const atendeTitulo = !termoTitulo || tarefa.titulo.toLowerCase().includes(termoTitulo);
@@ -8,7 +7,6 @@ export function processarTarefas(tarefas, { titulo = "", prioridade = "", status
     const atendeStatus = !status || tarefa.status === status;
 
     return atendeTitulo && atendePrioridade && atendeStatus;
-
   });
 
   if (ordemPrazo) {
@@ -24,6 +22,6 @@ export function processarTarefas(tarefas, { titulo = "", prioridade = "", status
       return 0;
     });
   }
-
+  
   return tarefasFiltradas;
 }

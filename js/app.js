@@ -1,57 +1,39 @@
 import { carregarTarefas } from "./api.js";
-import { renderizarEstado } from "./estados.js";
+import { renderizarApp } from "./estados.js";
 import { processarTarefas } from "./busca.js";
-
 
 const estado = {
   tarefas: [],
-  filtros: {
-    titulo: "",
-    prioridade: "",
-    status: "",
-    ordemPrazo: ""
-  }
+  busca: "",
+  prioridade: "",
+  status: "",
+  ordemPrazo: "",
+  carregamento: false,
+  erro: null
 };
 
-
-function aplicarFiltrosEObrigaRenderizacao() {
-  const resultado = processarTarefas(estado.tarefas, estado.filtros);
-
-  if (resultado.length === 0) {
-    renderizarEstado("vazio");
-  } else {
-    renderizarEstado("sucesso", resultado);
-  }
-}
-
 async function inicializarApp() {
-  renderizarEstado("carregando");
+  estado.carregamento = true;
+  estado.erro = null;
+  renderizarApp(estado);
 
   try {
     estado.tarefas = await carregarTarefas();
-
-    if (estado.tarefas.length === 0) {
-      renderizarEstado("vazio");
-    } else {
-      aplicarFiltrosEObrigaRenderizacao();
-    }
   } catch (erro) {
-    let mensagemExibida = "Ocorreu uma falha desconhecida.";
-
     if (erro.name === "TypeError") {
-      mensagemExibida = "Falha de rede. Verifique sua conexão com a internet.";
+      estado.erro = "Falha de rede. Verifique sua conexão com a internet.";
     } else if (erro.name === "SyntaxError") {
-      mensagemExibida = "Erro de formato. O arquivo JSON enviado é inválido.";
+      estado.erro = "Erro de formato. O arquivo JSON enviado é inválido.";
     } else if (erro.name === "ErroProtocolo") {
-      mensagemExibida = `Erro de protocolo no servidor (${erro.message}).`;
-    } else if (erro.message) {
-      mensagemExibida = erro.message;
+      estado.erro = `Erro de protocolo no servidor (${erro.message}).`;
+    } else {
+      estado.erro = erro.message || "Ocorreu uma falha desconhecida.";
     }
-
-    renderizarEstado("erro", mensagemExibida);
+  } finally {
+    estado.carregamento = false;
+    renderizarApp(estado);
   }
 }
-
 
 const formFiltros = document.getElementById("form-filtros");
 const inputTitulo = document.getElementById("titulo");
@@ -60,60 +42,49 @@ const selectStatus = document.getElementById("status");
 const selectOrdemPrazo = document.getElementById("ordem-prazo");
 const btnLimpar = document.getElementById("btn-limpar");
 
-if (formFiltros) {
-
-  formFiltros.addEventListener("submit", (evento) => {
-    evento.preventDefault();
-    aplicarFiltrosEObrigaRenderizacao();
+if (inputTitulo) {
+  inputTitulo.addEventListener("input", (evento) => {
+    estado.busca = evento.target.value;
+    renderizarApp(estado);
   });
+}
+
+if (selectPrioridade) {
+  selectPrioridade.addEventListener("change", (evento) => {
+    estado.prioridade = evento.target.value;
+    renderizarApp(estado);
+  });
+}
+
+if (selectStatus) {
+  selectStatus.addEventListener("change", (evento) => {
+    estado.status = evento.target.value;
+    renderizarApp(estado);
+  });
+}
+
+if (selectOrdemPrazo) {
+  selectOrdemPrazo.addEventListener("change", (evento) => {
+    estado.ordemPrazo = evento.target.value;
+    renderizarApp(estado);
+  });
+}
+
+if (btnLimpar) {
+  btnLimpar.addEventListener("click", () => {
+
+    estado.busca = "";
+    estado.prioridade = "";
+    estado.status = "";
+    estado.ordemPrazo = "";
 
 
-  if (inputTitulo) {
-    inputTitulo.addEventListener("input", (evento) => {
-      estado.filtros.titulo = evento.target.value;
-      aplicarFiltrosEObrigaRenderizacao();
-    });
-  }
-
-  if (selectPrioridade) {
-    selectPrioridade.addEventListener("change", (evento) => {
-      estado.filtros.prioridade = evento.target.value;
-      aplicarFiltrosEObrigaRenderizacao();
-    });
-  }
-
-  if (selectStatus) {
-    selectStatus.addEventListener("change", (evento) => {
-      estado.filtros.status = evento.target.value;
-      aplicarFiltrosEObrigaRenderizacao();
-    });
-  }
-
-  if (selectOrdemPrazo) {
-    selectOrdemPrazo.addEventListener("change", (evento) => {
-      estado.filtros.ordemPrazo = evento.target.value;
-      aplicarFiltrosEObrigaRenderizacao();
-    });
-  }
-
-
-  if (btnLimpar) {
-    btnLimpar.addEventListener("click", () => {
-
-      estado.filtros = {
-        titulo: "",
-        prioridade: "",
-        status: "",
-        ordemPrazo: ""
-      };
-
-
+    if (formFiltros) {
       formFiltros.reset();
+    }
 
-
-      aplicarFiltrosEObrigaRenderizacao();
-    });
-  }
+    renderizarApp(estado);
+  });
 }
 
 
@@ -128,13 +99,20 @@ if (quadro) {
     if (!cartao) return;
 
     const id = cartao.dataset.tarefaId;
-    const tarefaEncontrada = estado.tarefas.find((t) => String(t.id) === String(id));
+
+    const tarefasVisiveis = processarTarefas(estado.tarefas, {
+      busca: estado.busca,
+      prioridade: estado.prioridade,
+      status: estado.status,
+      ordemPrazo: estado.ordemPrazo
+    });
+
+    const tarefaEncontrada = tarefasVisiveis.find((t) => String(t.id) === String(id));
 
     if (tarefaEncontrada) {
       console.log("Detalhes da tarefa:", tarefaEncontrada);
     }
   });
 }
-
 
 document.addEventListener("DOMContentLoaded", inicializarApp);
